@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cursos de Nani</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/main.min.css' rel='stylesheet' />
+    <style>
+        body {
+            background-color: pink; /* Fondo de la página color rosado */
+        }
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+  
+  
+        #container {
+            display: flex;
+            justify-content: center; /* Centrar contenido horizontalmente */
+            align-items: center; /* Alinear contenido verticalmente al centro */
+            margin: 20px;
+        }
+
+        #image-container {
+            margin-right: 20px; /* Espacio entre la imagen y el calendario */
+            margin-top: 50px; /* Baja la imagen un poco más abajo */
+        }
+    </style>
+</head>
+<body>
+    <!-- <img src="/my molody.png" alt="MY MELODY" width="300"> 
+    <h1>Cursos</h1> -->
+
+    <h1>Cursos</h1>
+
+    <form id="course-form">
+        <h1>Histologìa</h1>
+        <input type="checkbox" id="c1" name="course" value="C1">
+        <label for="c1">Lunes, 8:00 - 10:30, Facultad de Medicina - I-B111 - Moron Castro, Cecilia Alejandrina (Teoría)</label><br>
+    
+        <input type="checkbox" id="c2" name="course" value="C2">
+        <label for="c2">Lunes, 10:30 - 13:00, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c3" name="course" value="C3">
+        <label for="c3">Miércoles, 8:00 - 10:30, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c4" name="course" value="C4">
+        <label for="c4">Martes, 8:00 - 10:30, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c5" name="course" value="C5">
+        <label for="c5">Viernes, 8:00 - 10:30, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c6" name="course" value="C6">
+        <label for="c6">Martes, 10:30 - 13:00, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c7" name="course" value="C7">
+        <label for="c7">Viernes, 10:30 - 13:00, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c8" name="course" value="C8">
+        <label for="c8">Jueves, 10:30 - 13:00, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c9" name="course" value="C9">
+        <label for="c9">Martes, 14:40 - 17:10, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c10" name="course" value="C10">
+        <label for="c10">Lunes, 13:50 - 16:20, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c11" name="course" value="C11">
+        <label for="c11">Miércoles, 10:30 - 13:00, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c12" name="course" value="C12">
+        <label for="c12">Miércoles, 18:50 - 21:20, Facultad de Medicina - I-B211 - Arenas Sovero, Doris Giovana (Teoría)</label><br>
+    
+        <input type="checkbox" id="c13" name="course" value="C13">
+        <label for="c13">Jueves, 13:50 - 16:20, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c14" name="course" value="C14">
+        <label for="c14">Sábado, 8:00 - 10:30, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c15" name="course" value="C15">
+        <label for="c15">Jueves, 18:50 - 21:20, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c16" name="course" value="C16">
+        <label for="c16">Sábado, 10:30 - 13:00, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c17" name="course" value="C17">
+        <label for="c17">Miércoles, 16:20 - 18:50, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c18" name="course" value="C18">
+        <label for="c18">Viernes, 14:40 - 17:10, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c19" name="course" value="C19">
+        <label for="c19">Jueves, 16:20 - 18:50, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c20" name="course" value="C20">
+        <label for="c20">Martes, 16:20 - 18:50, Facultad de Medicina - I-A106 - Arenas Sovero, Doris Giovana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c21" name="course" value="C21">
+        <label for="c21">Martes, 18:50 - 21:20, Facultad de Medicina - I-A106 - Arenas Sovero, Doris Giovana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c22" name="course" value="C22">
+        <label for="c22">Sábado, 16:20 - 18:50, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c23" name="course" value="C23">
+        <label for="c23">Martes, 8:00 - 10:30, Facultad de Medicina - I-B111 - Salinas Salas, Cecilia Roxana (Teoría)</label><br>
+    
+        <input type="checkbox" id="c24" name="course" value="C24">
+        <label for="c24">Lunes, 8:00 - 10:30, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c25" name="course" value="C25">
+        <label for="c25">Miércoles, 8:00 - 10:30, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c26" name="course" value="C26">
+        <label for="c26">Lunes, 10:30 - 13:00, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c27" name="course" value="C27">
+        <label for="c27">Miércoles, 10:30 - 13:00, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c28" name="course" value="C28">
+        <label for="c28">Jueves, 8:00 - 10:30, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c29" name="course" value="C29">
+        <label for="c29">Martes, 10:30 - 13:00, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c30" name="course" value="C30">
+        <label for="c30">Jueves, 8:00 - 10:30, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c31" name="course" value="C31">
+        <label for="c31">Martes, 17:10 - 19:40, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="c32" name="course" value="C32">
+        <label for="c32">Miércoles, 18:50 - 21:20, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)</label><br>
+
+        <input type="checkbox" id="c33" name="course" value="C33">
+        <label for="c33">Viernes, 17:10 - 19:40, Lab	Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)</label><br>
+
+
+        <h1>Ingles</h1>
+
+        <input type="checkbox" id="c1" name="course" value="03_MH-311_01_0">
+        <label for="c34">Lunes, 13:50 - 17:10, Aulario: Pabellón 34 - Inca Roca - 34-302 - Martinez Garcia, Jacqueline Sofia</label><br>
+
+        <input type="checkbox" id="c2" name="course" value="03_MH-311_02_0">
+        <label for="c35">Lunes, 17:10 - 20:30, Aulario: Pabellón 34 - Inca Roca - 34-309 - Sánchez Medina, Ana Guadalupe</label><br>
+
+        <input type="checkbox" id="c3" name="course" value="03_MH-311_03_0">
+        <label for="c36">Martes, 13:50 - 17:10, Aulario: Pabellón 34 - Inca Roca - 34-301 - Martinez Garcia, Jacqueline Sofia</label><br>
+
+        <input type="checkbox" id="c4" name="course" value="03_MH-311_04_0">
+        <label for="c37">Martes, 17:10 - 20:30, Aulario: Pabellón 34 - Inca Roca - 34-307 - Martinez Garcia, Jacqueline Sofia</label><br>
+
+        <input type="checkbox" id="c5" name="course" value="03_MH-311_05_0">
+        <label for="38">Miércoles, 9:40 - 13:00, Aulario: Pabellón 34 - Inca Roca - 34-302 - Villanelo Ninapaytan, Maria Serena Guendalina</label><br>
+
+        <input type="checkbox" id="c6" name="course" value="03_MH-311_06_0">
+        <label for="39">Miércoles, 13:50 - 17:10, Aulario: Pabellón 34 - Inca Roca - 34-405 - Sánchez Medina, Ana Guadalupe</label><br>
+
+        <input type="checkbox" id="c7" name="course" value="03_MH-311_07_0">
+        <label for="40">Jueves, 9:40 - 13:00, Aulario: Pabellón 34 - Inca Roca - 34-406 - Villanelo Ninapaytan, Maria Serena Guendalina</label><br>
+
+        <input type="checkbox" id="c8" name="course" value="03_MH-311_08_0">
+        <label for="41">Viernes, 9:40 - 13:00, Aulario: Pabellón 34 - Inca Roca - 34-502 - Villanelo Ninapaytan, Maria Serena Guendalina</label><br>
+
+        <input type="checkbox" id="c9" name="course" value="03_MH-311_09_0">
+        <label for="41">Viernes, 9:40 - 13:00, Aulario: Pabellón 34 - Inca Roca - 34-602 - Mancilla Anicama, Erika Angelita</label><br>
+
+        <input type="checkbox" id="c10" name="course" value="03_MH-311_10_0">
+        <label for="43">Viernes, 13:50 - 17:10, Aulario: Pabellón 34 - Inca Roca - 34-410 - Mancilla Anicama, Erika Angelita</label><br>
+
+        <h1>Embriología</h1>
+
+        <input type="checkbox" id="e1" name="course" value="E1">
+        <label for="e1">Lunes, 17:10 - 19:40, LLMM y Psicología - E-5056 - Abarca Barriga, Hugo Hernán (Teoría)</label><br>
+    
+        <input type="checkbox" id="e2" name="course" value="E2">
+        <label for="e2">Lunes, 13:50 - 15:30, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e3" name="course" value="E3">
+        <label for="e3">Viernes, 8:00 - 9:40, Facultad de Medicina - I-A207 - Castro Mujica, María del Carmen (Práctica)</label><br>
+    
+        <input type="checkbox" id="e4" name="course" value="E4">
+        <label for="e4">Lunes, 15:30 - 17:10, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e5" name="course" value="E5">
+        <label for="e5">Viernes, 8:00 - 9:40, Facultad de Medicina - I-A408 - Caballero Bedón, Nathaly Janet (Práctica)</label><br>
+    
+        <input type="checkbox" id="e6" name="course" value="E6">
+        <label for="e6">Lunes, 19:40 - 21:20, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e7" name="course" value="E7">
+        <label for="e7">Viernes, 9:40 - 11:20, Facultad de Medicina - I-A207 - Castro Mujica, María del Carmen (Práctica)</label><br>
+    
+        <input type="checkbox" id="e8" name="course" value="E8">
+        <label for="e8">Miércoles, 14:40 - 16:20, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e9" name="course" value="E9">
+        <label for="e9">Viernes, 9:40 - 11:20, Facultad de Medicina - I-A408 - Caballero Bedón, Nathaly Janet (Práctica)</label><br>
+    
+        <input type="checkbox" id="e10" name="course" value="E10">
+        <label for="e10">Miércoles, 16:20 - 18:00, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e11" name="course" value="E11">
+        <label for="e11">Viernes, 11:20 - 13:00, Facultad de Medicina - I-A207 - Castro Mujica, María del Carmen (Práctica)</label><br>
+    
+        <input type="checkbox" id="e12" name="course" value="E12">
+        <label for="e12">Miércoles, 18:00 - 19:40, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e13" name="course" value="E13">
+        <label for="e13">Viernes, 11:20 - 13:00, Facultad de Medicina - I-A408 - Caballero Bedón, Nathaly Janet (Práctica)</label><br>
+    
+        <input type="checkbox" id="e14" name="course" value="E14">
+        <label for="e14">Sábado, 13:50 - 16:20, LLMM y Psicología - E-5056 - Rodriguez Quispe, Richard Saul (Teoría)</label><br>
+    
+        <input type="checkbox" id="e15" name="course" value="E15">
+        <label for="e15">Jueves, 8:00 - 9:40, Facultad de Medicina - I-B203 - Vasquez Sotomayor, Flor del Milagro (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e16" name="course" value="E16">
+        <label for="e16">Martes, 13:50 - 15:30, Facultad de Medicina - I-A207 - Beltrán Gárate, Brady Ernesto (Práctica)</label><br>
+    
+        <input type="checkbox" id="e17" name="course" value="E17">
+        <label for="e17">Jueves, 10:30 - 12:10, Facultad de Medicina - I-A106 - Vasquez Sotomayor, Flor del Milagro (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e18" name="course" value="E18">
+        <label for="e18">Martes, 15:30 - 17:10, Facultad de Medicina - I-A207 - Beltrán Gárate, Brady Ernesto (Práctica)</label><br>
+    
+        <input type="checkbox" id="e19" name="course" value="E19">
+        <label for="e19">Jueves, 12:10 - 13:50, Facultad de Medicina - I-A106 - Vasquez Sotomayor, Flor del Milagro (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e20" name="course" value="E20">
+        <label for="e20">Martes, 17:10 - 18:50, Facultad de Medicina - I-A207 - Beltrán Gárate, Brady Ernesto (Práctica)</label><br>
+    
+        <input type="checkbox" id="e21" name="course" value="E21">
+        <label for="e21">Jueves, 15:30 - 17:10, Facultad de Medicina - I-A106 - Vasquez Sotomayor, Flor del Milagro (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e22" name="course" value="E22">
+        <label for="e22">Martes, 16:20 - 18:00, Facultad de Medicina - I-A307 - La Serna Infantes, Jorge Estanislao (Práctica)</label><br>
+    
+        <input type="checkbox" id="e23" name="course" value="E23">
+        <label for="e23">Martes, 18:50 - 20:30, Facultad de Medicina - I-A207 - Beltrán Gárate, Brady Ernesto (Práctica)</label><br>
+    
+        <input type="checkbox" id="e24" name="course" value="E24">
+        <label for="e24">Sábado, 16:20 - 18:00, Facultad de Medicina - I-A106 - Rodriguez Quispe, Richard Saul (Laboratorio)</label><br>
+    
+        <input type="checkbox" id="e25" name="course" value="E25">
+        <label for="e25">Martes, 18:00 - 19:40, Facultad de Medicina - I-A408 - La Serna Infantes, Jorge Estanislao (Práctica)</label><br>
+    
+        <input type="checkbox" id="e26" name="course" value="E26">
+        <label for="e26">Sábado, 18:00 - 19:40, Facultad de Medicina - I-A106 - Rodriguez Quispe, Richard Saul (Laboratorio)</label><br>
+    
+<h1>Anatomia</h1>
+
+<input type="checkbox" id="A1" name="course" value="A1">
+<label for="A1">03 MH-309 - Anatomía 1 0 Teo LLMM y Psicología - E-5034 - Lunes 1 14:40 - 15:30 Valderrama Wong, Milton John Carlos</label><br>
+
+<input type="checkbox" id="A2" name="course" value="A2">
+<label for="A2">03 MH-309 - Anatomía 1 0 Teo LLMM y Psicología - E-5034 - Lunes 1 15:30 - 16:20 Espinoza Delgado, Enrique Eduardo</label><br>
+
+<input type="checkbox" id="A3" name="course" value="A3">
+<label for="A3">03 MH-309 - Anatomía 1 0 Teo LLMM y Psicología - E-5034 - Miércoles 1 14:40 - 15:30 Romero Visurraga, Wilinton Gregorio</label><br>
+
+<input type="checkbox" id="A4" name="course" value="A4">
+<label for="A4">03 MH-309 - Anatomía 1 0 Teo LLMM y Psicología - E-5034 - Viernes 1 14:40 - 15:30 Kiyohara Ramos, Marco Antonio</label><br>
+
+<input type="checkbox" id="A5" name="course" value="A5">
+<label for="A5">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Lunes 4 16:20 - 19:40 Cabrera Romero, Segundo German</label><br>
+
+<input type="checkbox" id="A6" name="course" value="A6">
+<label for="A6">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Lunes 4 16:20 - 19:40 Durand Lopez, Cesar Augusto</label><br>
+
+<input type="checkbox" id="A7" name="course" value="A7">
+<label for="A7">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Lunes 4 16:20 - 19:40 Espinoza Delgado, Enrique Eduardo</label><br>
+
+<input type="checkbox" id="A8" name="course" value="A8">
+<label for="A8">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Lunes 4 16:20 - 19:40 Kiyohara Ramos, Marco Antonio</label><br>
+
+<input type="checkbox" id="A9" name="course" value="A9">
+<label for="A9">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Lunes 4 16:20 - 19:40 Razuri Bustamante, Cesar Ramon</label><br>
+
+<input type="checkbox" id="A10" name="course" value="A10">
+<label for="A10">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Lunes 4 16:20 - 19:40 Romero Visurraga, Wilinton Gregorio</label><br>
+
+<input type="checkbox" id="A11" name="course" value="A11">
+<label for="A11">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Lunes 4 16:20 - 19:40 Sandoval Vilchez, José Santiago</label><br>
+
+<input type="checkbox" id="A12" name="course" value="A12">
+<label for="A12">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Lunes 4 16:20 - 19:40 Silva Campos, Pedro</label><br>
+
+<input type="checkbox" id="A13" name="course" value="A13">
+<label for="A13">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Lunes 4 16:20 - 19:40 Valderrama Wong, Milton John Carlos</label><br>
+
+<input type="checkbox" id="A14" name="course" value="A14">
+<label for="A14">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Miércoles 4 15:30 - 18:50 Cabrera Romero, Segundo German</label><br>
+
+<input type="checkbox" id="A15" name="course" value="A15">
+<label for="A15">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Miércoles 4 15:30 - 18:50 Durand Lopez, Cesar Augusto</label><br>
+
+<input type="checkbox" id="A16" name="course" value="A16">
+<label for="A16">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Miércoles 4 15:30 - 18:50 Espinoza Delgado, Enrique Eduardo</label><br>
+
+<input type="checkbox" id="A17" name="course" value="A17">
+<label for="A17">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Miércoles 4 15:30 - 18:50 Kiyohara Ramos, Marco Antonio</label><br>
+
+<input type="checkbox" id="A18" name="course" value="A18">
+<label for="A18">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Miércoles 4 15:30 - 18:50 Razuri Bustamante, Cesar Ramon</label><br>
+
+<input type="checkbox" id="A19" name="course" value="A19">
+<label for="A19">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Miércoles 4 15:30 - 18:50 Romero Visurraga, Wilinton Gregorio</label><br>
+
+<input type="checkbox" id="A20" name="course" value="A20">
+<label for="A20">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Miércoles 4 15:30 - 18:50 Sandoval Vilchez, José Santiago</label><br>
+
+<input type="checkbox" id="A21" name="course" value="A21">
+<label for="A21">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Miércoles 4 15:30 - 18:50 Silva Campos, Pedro</label><br>
+
+<input type="checkbox" id="A22" name="course" value="A22">
+<label for="A22">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Miércoles 4 15:30 - 18:50 Valderrama Wong, Milton John Carlos</label><br>
+
+<input type="checkbox" id="A23" name="course" value="A23">
+<label for="A23">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Viernes 4 15:30 - 18:50 Cabrera Romero, Segundo German</label><br>
+
+<input type="checkbox" id="A24" name="course" value="A24">
+<label for="A24">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Viernes 4 15:30 - 18:50 De La Cruz Aramburu, Pedro Victor</label><br>
+
+<input type="checkbox" id="A25" name="course" value="A25">
+<label for="A25">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Viernes 4 15:30 - 18:50 Durand Lopez, Cesar Augusto</label><br>
+
+<input type="checkbox" id="A26" name="course" value="A26">
+<label for="A26">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Viernes 4 15:30 - 18:50 Espinoza Delgado, Enrique Eduardo</label><br>
+
+<input type="checkbox" id="A27" name="course" value="A27">
+<label for="A27">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Viernes 4 15:30 - 18:50 Kiyohara Ramos, Marco Antonio</label><br>
+
+<input type="checkbox" id="A28" name="course" value="A28">
+<label for="A28">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Viernes 4 15:30 - 18:50 Razuri Bustamante, Cesar Ramon</label><br>
+
+<input type="checkbox" id="A29" name="course" value="A29">
+<label for="A29">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Viernes 4 15:30 - 18:50 Romero Visurraga, Wilinton Gregorio</label><br>
+
+<input type="checkbox" id="A30" name="course" value="A30">
+<label for="A30">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Viernes 4 15:30 - 18:50 Sandoval Vilchez, José Santiago</label><br>
+
+<input type="checkbox" id="A31" name="course" value="A31">
+<label for="A31">03 MH-309 - Anatomía 1 1 Lab Laboratorio de Medicina - H-101 - Viernes 4 15:30 - 18:50 Valderrama Wong, Milton John Carlos</label><br>
+
+<input type="checkbox" id="A32" name="course" value="A32">
+<label for="A32">03 MH-309 - Anatomía 1 1 Prá LLMM y Psicología - E-5034 - Viernes 2 18:50 - 20:30 Valderrama Wong, Milton John Carlos</label><br>
+
+<input type="checkbox" id="A33" name="course" value="A33">
+<label for="A33">03 MH-309 - Anatomía 2 0 Teo LLMM y Psicología - E-5034 - Jueves 1 14:40 - 15:30 Cabrera Romero, Segundo German</label><br>
+
+<input type="checkbox" id="A34" name="course" value="A34">
+<label for="A34">03 MH-309 - Anatomía 2 0 Teo LLMM y Psicología - E-5034 - Martes 1 14:40 - 15:30 Valderrama Wong, Milton John Carlos</label><br>
+
+<input type="checkbox" id="A35" name="course" value="A35">
+<label for="A35">03 MH-309 - Anatomía 2 0 Teo LLMM y Psicología - E-5034 - Martes 1 15:30 - 16:20 Durand Lopez, Cesar Augusto</label><br>
+
+<input type="checkbox" id="A36" name="course" value="A36">
+<label for="A36">03 MH-309 - Anatomía 2 0 Teo LLMM y Psicología - E-5034 - Sábado 1 14:40 - 15:30 Sandoval Vilchez, José Santiago</label><br>
+
+<input type="checkbox" id="A37" name="course" value="A37">
+<label for="A37">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Jueves 4 15:30 - 18:50 Cabrera Romero, Segundo German</label><br>
+
+<input type="checkbox" id="A38" name="course" value="A38">
+<label for="A38">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Jueves 4 15:30 - 18:50 Chavarry Delgado, Henry Eduardo</label><br>
+
+<input type="checkbox" id="A39" name="course" value="A39">
+<label for="A39">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Jueves 4 15:30 - 18:50 Durand Lopez, Cesar Augusto</label><br>
+
+<input type="checkbox" id="A40" name="course" value="A40">
+<label for="A40">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Jueves 4 15:30 - 18:50 Espinoza Delgado, Enrique Eduardo</label><br>
+
+<input type="checkbox" id="A41" name="course" value="A41">
+<label for="A41">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Jueves 4 15:30 - 18:50 Kiyohara Ramos, Marco Antonio</label><br>
+
+<input type="checkbox" id="A42" name="course" value="A42">
+<label for="A42">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Jueves 4 15:30 - 18:50 Romero Visurraga, Wilinton Gregorio</label><br>
+
+<input type="checkbox" id="A43" name="course" value="A43">
+<label for="A43">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Jueves 4 15:30 - 18:50 Sandoval Vilchez, José Santiago</label><br>
+
+<input type="checkbox" id="A44" name="course" value="A44">
+<label for="A44">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Jueves 4 15:30 - 18:50 Silva Campos, Pedro</label><br>
+
+<input type="checkbox" id="A45" name="course" value="A45">
+<label for="A45">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Jueves 4 15:30 - 18:50 Valderrama Wong, Milton John Carlos</label><br>
+
+<input type="checkbox" id="A46" name="course" value="A46">
+<label for="A46">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Martes 4 16:20 - 19:40 Cabrera Romero, Segundo German</label><br>
+
+<input type="checkbox" id="A47" name="course" value="A47">
+<label for="A47">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Martes 4 16:20 - 19:40 Chavarry Delgado, Henry Eduardo</label><br>
+
+<input type="checkbox" id="A48" name="course" value="A48">
+<label for="A48">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Martes 4 16:20 - 19:40 De La Cruz Aramburu, Pedro Victor</label><br>
+
+<input type="checkbox" id="A49" name="course" value="A49">
+<label for="A49">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Martes 4 16:20 - 19:40 Durand Lopez, Cesar Augusto</label><br>
+
+<input type="checkbox" id="A50" name="course" value="A50">
+<label for="A50">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Martes 4 16:20 - 19:40 Espinoza Delgado, Enrique Eduardo</label><br>
+
+<input type="checkbox" id="A51" name="course" value="A51">
+<label for="A51">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Martes 4 16:20 - 19:40 Kiyohara Ramos, Marco Antonio</label><br>
+
+<input type="checkbox" id="A52" name="course" value="A52">
+<label for="A52">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Martes 4 16:20 - 19:40 Romero Visurraga, Wilinton Gregorio</label><br>
+
+<input type="checkbox" id="A53" name="course" value="A53">
+<label for="A53">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Martes 4 16:20 - 19:40 Sandoval Vilchez, José Santiago</label><br>
+
+<input type="checkbox" id="A54" name="course" value="A54">
+<label for="A54">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Martes 4 16:20 - 19:40 Valderrama Wong, Milton John Carlos</label><br>
+
+<input type="checkbox" id="A55" name="course" value="A55">
+<label for="A55">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Sábado 4 15:30 - 18:50 Cabrera Romero, Segundo German</label><br>
+
+<input type="checkbox" id="A56" name="course" value="A56">
+<label for="A56">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Sábado 4 15:30 - 18:50 Chavarry Delgado, Henry Eduardo</label><br>
+
+<input type="checkbox" id="A57" name="course" value="A57">
+<label for="A57">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Sábado 4 15:30 - 18:50 De La Cruz Aramburu, Pedro Victor</label><br>
+
+<input type="checkbox" id="A58" name="course" value="A58">
+<label for="A58">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Sábado 4 15:30 - 18:50 Durand Lopez, Cesar Augusto</label><br>
+
+<input type="checkbox" id="A59" name="course" value="A59">
+<label for="A59">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Sábado 4 15:30 - 18:50 Espinoza Delgado, Enrique Eduardo</label><br>
+
+<input type="checkbox" id="A60" name="course" value="A60">
+<label for="A60">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Sábado 4 15:30 - 18:50 Kiyohara Ramos, Marco Antonio</label><br>
+
+<input type="checkbox" id="A61" name="course" value="A61">
+<label for="A61">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Sábado 4 15:30 - 18:50 Romero Visurraga, Wilinton Gregorio</label><br>
+
+<input type="checkbox" id="A62" name="course" value="A62">
+<label for="A62">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Sábado 4 15:30 - 18:50 Sandoval Vilchez, José Santiago</label><br>
+
+<input type="checkbox" id="A63" name="course" value="A63">
+<label for="A63">03 MH-309 - Anatomía 2 1 Lab Laboratorio de Medicina - H-101 - Sábado 4 15:30 - 18:50 Valderrama Wong, Milton John Carlos</label><br>
+
+<input type="checkbox" id="A64" name="course" value="A64">
+<label for="A64">03 MH-309 - Anatomía 2 1 Prá LLMM y Psicología - E-5034 (Semipresencial) - Sábado 2 18:50 - 20:30 Valderrama Wong, Milton John Carlos</label><br>
+
+
+    </form>
+ 
+
+    <div id="container">
+        <div id="image-container">
+            <img src="/my molody.png" alt="MY MELODY" width="300"> <!-- Ajusta el tamaño según sea necesario -->
+        </div>
+        <div id="calendar-container">
+            <div id="calendar"></div> <!-- Calendario se renderizará aquí -->
+        </div>
+    </div>
+
+
+
+    <div id="calendar"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            const timeSlots = {
+                "C1": { 
+                    "title": "Lunes, 8:00 - 10:30, Facultad de Medicina - I-B111 - Moron Castro, Cecilia Alejandrina (Teoría)", 
+                    "start": "2024-08-12T08:00:00", 
+                    "end": "2024-08-12T10:30:00", 
+                    "id": "C1" 
+                },
+                "C2": { 
+                    "title": "Lunes, 10:30 - 13:00, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)", 
+                    "start": "2024-08-12T10:30:00", 
+                    "end": "2024-08-12T13:00:00", 
+                    "id": "C2" 
+                },
+                "C3": { 
+                    "title": "Miércoles, 8:00 - 10:30, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)", 
+                    "start": "2024-08-14T08:00:00", 
+                    "end": "2024-08-14T10:30:00", 
+                    "id": "C3" 
+                },
+                "C4": { 
+                    "title": "Martes, 8:00 - 10:30, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)", 
+                    "start": "2024-08-13T08:00:00", 
+                    "end": "2024-08-13T10:30:00", 
+                    "id": "C4" 
+                },
+                "C5": { 
+                    "title": "Viernes, 8:00 - 10:30, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)", 
+                    "start": "2024-08-16T08:00:00", 
+                    "end": "2024-08-16T10:30:00", 
+                    "id": "C5" 
+                },
+                "C6": { 
+                    "title": "Martes, 10:30 - 13:00, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)", 
+                    "start": "2024-08-13T10:30:00", 
+                    "end": "2024-08-13T13:00:00", 
+                    "id": "C6" 
+                },
+                "C7": { 
+                    "title": "Viernes, 10:30 - 13:00, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)", 
+                    "start": "2024-08-16T10:30:00", 
+                    "end": "2024-08-16T13:00:00", 
+                    "id": "C7" 
+                },
+                "C8": { 
+                    "title": "Jueves, 10:30 - 13:00, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)", 
+                    "start": "2024-08-15T10:30:00", 
+                    "end": "2024-08-15T13:00:00", 
+                    "id": "C8" 
+                },
+                "C9": { 
+                    "title": "Martes, 14:40 - 17:10, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)", 
+                    "start": "2024-08-13T14:40:00", 
+                    "end": "2024-08-13T17:10:00", 
+                    "id": "C9" 
+                },
+                "C10": { 
+                    "title": "Lunes, 13:50 - 16:20, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)", 
+                    "start": "2024-08-12T13:50:00", 
+                    "end": "2024-08-12T16:20:00", 
+                    "id": "C10" 
+                },
+                "C11": { 
+                    "title": "Miércoles, 10:30 - 13:00, Facultad de Medicina - I-A204 - Moron Castro, Cecilia Alejandrina (Laboratorio)", 
+                    "start": "2024-08-14T10:30:00", 
+                    "end": "2024-08-14T13:00:00", 
+                    "id": "C11" 
+                },
+                "C12": { 
+                    "title": "Miércoles, 18:50 - 21:20, Facultad de Medicina - I-B211 - Arenas Sovero, Doris Giovana (Teoría)", 
+                    "start": "2024-08-14T18:50:00", 
+                    "end": "2024-08-14T21:20:00", 
+                    "id": "C12" 
+                },
+                "C13": { 
+                    "title": "Jueves, 13:50 - 16:20, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)", 
+                    "start": "2024-08-15T13:50:00", 
+                    "end": "2024-08-15T16:20:00", 
+                    "id": "C13" 
+                },
+                "C14": { 
+                    "title": "Sábado, 8:00 - 10:30, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)", 
+                    "start": "2024-08-17T08:00:00", 
+                    "end": "2024-08-17T10:30:00", 
+                    "id": "C14" 
+                },
+                "C15": { 
+                    "title": "Jueves, 18:50 - 21:20, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)", 
+                    "start": "2024-08-15T18:50:00", 
+                    "end": "2024-08-15T21:20:00", 
+                    "id": "C15" 
+                },
+                "C16": { 
+                    "title": "Sábado, 10:30 - 13:00, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)", 
+                    "start": "2024-08-17T10:30:00", 
+                    "end": "2024-08-17T13:00:00", 
+                    "id": "C16" 
+                },
+                "C17": { 
+                    "title": "Miércoles, 16:20 - 18:50, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)", 
+                    "start": "2024-08-14T16:20:00", 
+                    "end": "2024-08-14T18:50:00", 
+                    "id": "C17" 
+                },
+                "C18": { 
+                    "title": "Viernes, 14:40 - 17:10, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)", 
+                    "start": "2024-08-16T14:40:00", 
+                    "end": "2024-08-16T17:10:00", 
+                    "id": "C18" 
+                },
+                "C19": { 
+                    "title": "Jueves, 16:20 - 18:50, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)", 
+                    "start": "2024-08-15T16:20:00", 
+                    "end": "2024-08-15T18:50:00", 
+                    "id": "C19" 
+                },
+                "C20": { 
+                    "title": "Martes, 16:20 - 18:50, Facultad de Medicina - I-A106 - Arenas Sovero, Doris Giovana (Laboratorio)", 
+                    "start": "2024-08-13T16:20:00", 
+                    "end": "2024-08-13T18:50:00", 
+                    "id": "C20" 
+                },
+                "C21": { 
+                    "title": "Martes, 18:50 - 21:20, Facultad de Medicina - I-A106 - Arenas Sovero, Doris Giovana (Laboratorio)", 
+                    "start": "2024-08-13T18:50:00", 
+                    "end": "2024-08-13T21:20:00", 
+                    "id": "C21" 
+                },
+                "C22": { 
+                    "title": "Sábado, 16:20 - 18:50, Facultad de Medicina - I-A204 - Arenas Sovero, Doris Giovana (Laboratorio)", 
+                    "start": "2024-08-17T16:20:00", 
+                    "end": "2024-08-17T18:50:00", 
+                    "id": "C22" 
+                },
+                "C23": { 
+                    "title": "Martes, 8:00 - 10:30, Facultad de Medicina - I-B111 - Salinas Salas, Cecilia Roxana (Teoría)", 
+                    "start": "2024-08-13T08:00:00", 
+                    "end": "2024-08-13T10:30:00", 
+                    "id": "C23" 
+                },
+                "C24": { 
+                    "title": "Lunes, 8:00 - 10:30, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)", 
+                    "start": "2024-08-12T08:00:00", 
+                    "end": "2024-08-12T10:30:00", 
+                    "id": "C24" 
+                },
+                "C25": { 
+                    "title": "Miércoles, 8:00 - 10:30, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)", 
+                    "start": "2024-08-14T08:00:00", 
+                    "end": "2024-08-14T10:30:00", 
+                    "id": "C25" 
+                },
+                "C26": { 
+                    "title": "Lunes, 10:30 - 13:00, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)", 
+                    "start": "2024-08-12T10:30:00", 
+                    "end": "2024-08-12T13:00:00", 
+                    "id": "C26" 
+                },
+                "C27": { 
+                    "title": "Miércoles, 10:30 - 13:00, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)", 
+                    "start": "2024-08-14T10:30:00", 
+                    "end": "2024-08-14T13:00:00", 
+                    "id": "C27" 
+                },
+                "C28": { 
+                    "title": "Jueves, 8:00 - 10:30, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)", 
+                    "start": "2024-08-15T08:00:00", 
+                    "end": "2024-08-15T10:30:00", 
+                    "id": "C28" 
+                },
+                "C29": { 
+                    "title": "Martes, 10:30 - 13:00, Facultad de Medicina - I-A106 - Salinas Salas, Cecilia Roxana (Laboratorio)", 
+                    "start": "2024-08-13T10:30:00", 
+                    "end": "2024-08-13T13:00:00", 
+                    "id": "C29" 
+                },
+                "C30": { 
+                    "title": "Jueves, 8:00 - 10:30, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)", 
+                    "start": "2024-08-15T08:00:00", 
+                    "end": "2024-08-15T10:30:00", 
+                    "id": "C30" 
+                },
+                "C31": { 
+                    "title": "Martes, 17:10 - 19:40, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)", 
+                    "start": "2024-08-13T17:10:00", 
+                    "end": "2024-08-13T19:40:00", 
+                    "id": "C31" 
+                },
+                "C32": { 
+                    "title": "Miércoles, 18:50 - 21:20, Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)", 
+                    "start": "2024-08-14T18:50:00", 
+                    "end": "2024-08-14T21:20:00", 
+                    "id": "C32" 
+                },
+                "C33": { 
+                    "title": "Miércoles, 17:10 - 19:40, Lab	Facultad de Medicina - I-A204 - Diaz Vera, Cecilia Yanet (Laboratorio)", 
+                    "start": "2024-08-14T17:10:00", 
+                    "end": "2024-08-14T19:40:00", 
+                    "id": "C33" 
+                },
+                "03_MH-311_01_0": { title: "Lunes, 13:50 - 17:10, Aulario: Pabellón 34 - Inca Roca - 34-302 - Martinez Garcia, Jacqueline Sofia", start: '2024-08-12T13:50:00', end: '2024-08-12T17:10:00', id: "03_MH-311_01_0" },
+                "03_MH-311_02_0": { title: "Lunes, 17:10 - 20:30, Aulario: Pabellón 34 - Inca Roca - 34-309 - Sánchez Medina, Ana Guadalupe", start: '2024-08-12T17:10:00', end: '2024-08-12T20:30:00', id: "03_MH-311_02_0" },
+                "03_MH-311_03_0": { title: "Martes, 13:50 - 17:10, Aulario: Pabellón 34 - Inca Roca - 34-301 - Martinez Garcia, Jacqueline Sofia", start: '2024-08-13T13:50:00', end: '2024-08-13T17:10:00', id: "03_MH-311_03_0" },
+                "03_MH-311_04_0": { title: "Martes, 17:10 - 20:30, Aulario: Pabellón 34 - Inca Roca - 34-307 - Martinez Garcia, Jacqueline Sofia", start: '2024-08-13T17:10:00', end: '2024-08-13T20:30:00', id: "03_MH-311_04_0" },
+                "03_MH-311_05_0": { title: "Miércoles, 9:40 - 13:00, Aulario: Pabellón 34 - Inca Roca - 34-302 - Villanelo Ninapaytan, Maria Serena Guendalina", start: '2024-08-14T09:40:00', end: '2024-08-14T13:00:00', id: "03_MH-311_05_0" },
+                "03_MH-311_06_0": { title: "Miércoles, 13:50 - 17:10, Aulario: Pabellón 34 - Inca Roca - 34-405 - Sánchez Medina, Ana Guadalupe", start: '2024-08-14T13:50:00', end: '2024-08-14T17:10:00', id: "03_MH-311_06_0" },
+                "03_MH-311_07_0": { title: "Jueves, 9:40 - 13:00, Aulario: Pabellón 34 - Inca Roca - 34-406 - Villanelo Ninapaytan, Maria Serena Guendalina", start: '2024-08-15T09:40:00', end: '2024-08-15T13:00:00', id: "03_MH-311_07_0" },
+                "03_MH-311_08_0": { title: "Viernes, 9:40 - 13:00, Aulario: Pabellón 34 - Inca Roca - 34-502 - Villanelo Ninapaytan, Maria Serena Guendalina", start: '2024-08-16T09:40:00', end: '2024-08-16T13:00:00', id: "03_MH-311_08_0" },
+                "03_MH-311_09_0": { title: "Viernes, 9:40 - 13:00, Aulario: Pabellón 34 - Inca Roca - 34-602 - Mancilla Anicama, Erika Angelita", start: '2024-08-16T09:40:00', end: '2024-08-16T13:00:00', id: "03_MH-311_09_0" },
+                "03_MH-311_10_0": { title: "Viernes, 13:50 - 17:10, Aulario: Pabellón 34 - Inca Roca - 34-410 - Mancilla Anicama, Erika Angelita", start: '2024-08-16T13:50:00', end: '2024-08-16T17:10:00', id: "03_MH-311_10_0" },
+
+                
+        "E1": { 
+        "title": "Lunes, 17:10 - 19:40, LLMM y Psicología - E-5056 - Abarca Barriga, Hugo Hernán (Teoría)", 
+        "start": "2024-08-12T17:10:00", 
+        "end": "2024-08-12T19:40:00", 
+        "id": "E1" 
+    },
+    "E2": { 
+        "title": "Lunes, 13:50 - 15:30, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)", 
+        "start": "2024-08-12T13:50:00", 
+        "end": "2024-08-12T15:30:00", 
+        "id": "E2" 
+    },
+    "E3": { 
+        "title": "Viernes, 8:00 - 9:40, Facultad de Medicina - I-A207 - Castro Mujica, María del Carmen (Práctica)", 
+        "start": "2024-08-16T08:00:00", 
+        "end": "2024-08-16T09:40:00", 
+        "id": "E3" 
+    },
+    "E4": { 
+        "title": "Lunes, 15:30 - 17:10, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)", 
+        "start": "2024-08-12T15:30:00", 
+        "end": "2024-08-12T17:10:00", 
+        "id": "E4" 
+    },
+    "E5": { 
+        "title": "Viernes, 8:00 - 9:40, Facultad de Medicina - I-A408 - Caballero Bedón, Nathaly Janet (Práctica)", 
+        "start": "2024-08-16T08:00:00", 
+        "end": "2024-08-16T09:40:00", 
+        "id": "E5" 
+    },
+    "E6": { 
+        "title": "Lunes, 19:40 - 21:20, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)", 
+        "start": "2024-08-12T19:40:00", 
+        "end": "2024-08-12T21:20:00", 
+        "id": "E6" 
+    },
+    "E7": { 
+        "title": "Viernes, 9:40 - 11:20, Facultad de Medicina - I-A207 - Castro Mujica, María del Carmen (Práctica)", 
+        "start": "2024-08-16T09:40:00", 
+        "end": "2024-08-16T11:20:00", 
+        "id": "E7" 
+    },
+    "E8": { 
+        "title": "Miércoles, 14:40 - 16:20, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)", 
+        "start": "2024-08-14T14:40:00", 
+        "end": "2024-08-14T16:20:00", 
+        "id": "E8" 
+    },
+    "E9": { 
+        "title": "Viernes, 9:40 - 11:20, Facultad de Medicina - I-A408 - Caballero Bedón, Nathaly Janet (Práctica)", 
+        "start": "2024-08-16T09:40:00", 
+        "end": "2024-08-16T11:20:00", 
+        "id": "E9" 
+    },
+    "E10": { 
+        "title": "Miércoles, 16:20 - 18:00, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)", 
+        "start": "2024-08-14T16:20:00", 
+        "end": "2024-08-14T18:00:00", 
+        "id": "E10" 
+    },
+    "E11": { 
+        "title": "Viernes, 11:20 - 13:00, Facultad de Medicina - I-A207 - Castro Mujica, María del Carmen (Práctica)", 
+        "start": "2024-08-16T11:20:00", 
+        "end": "2024-08-16T13:00:00", 
+        "id": "E11" 
+    },
+    "E12": { 
+        "title": "Miércoles, 18:00 - 19:40, Facultad de Medicina - I-A106 - Abarca Barriga, Hugo Hernán (Laboratorio)", 
+        "start": "2024-08-14T18:00:00", 
+        "end": "2024-08-14T19:40:00", 
+        "id": "E12" 
+    },
+    "E13": { 
+        "title": "Viernes, 11:20 - 13:00, Facultad de Medicina - I-A408 - Caballero Bedón, Nathaly Janet (Práctica)", 
+        "start": "2024-08-16T11:20:00", 
+        "end": "2024-08-16T13:00:00", 
+        "id": "E13" 
+    },
+    "E14": { 
+        "title": "Sábado, 13:50 - 16:20, LLMM y Psicología - E-5056 - Rodriguez Quiispe, Richard Saul (Teoría)", 
+        "start": "2024-08-17T13:50:00", 
+        "end": "2024-08-17T16:20:00", 
+        "id": "E14" 
+    },
+    "E15": { 
+        "title": "Jueves, 8:00 - 9:40, Facultad de Medicina - I-B203 - Vasquez Sotomayor, Flor del Milagro (Laboratorio)", 
+        "start": "2024-08-15T08:00:00", 
+        "end": "2024-08-15T09:40:00", 
+        "id": "E15" 
+    },
+    "E16": { 
+        "title": "Martes, 13:50 - 15:30, Facultad de Medicina - I-A207 - Beltrán Gárate, Brady Ernesto (Práctica)", 
+        "start": "2024-08-13T13:50:00", 
+        "end": "2024-08-13T15:30:00", 
+        "id": "E16" 
+    },
+    "E17": { 
+        "title": "Jueves, 10:30 - 12:10, Facultad de Medicina - I-A106 - Vasquez Sotomayor, Flor del Milagro (Laboratorio)", 
+        "start": "2024-08-15T10:30:00", 
+        "end": "2024-08-15T12:10:00", 
+        "id": "E17" 
+    },
+    "E18": { 
+        "title": "Martes, 15:30 - 17:10, Facultad de Medicina - I-A207 - Beltrán Gárate, Brady Ernesto (Práctica)", 
+        "start": "2024-08-13T15:30:00", 
+        "end": "2024-08-13T17:10:00", 
+        "id": "E18" 
+    },
+    "E19": { 
+        "title": "Jueves, 12:10 - 13:50, Facultad de Medicina - I-A106 - Vasquez Sotomayor, Flor del Milagro (Laboratorio)", 
+        "start": "2024-08-15T12:10:00", 
+        "end": "2024-08-15T13:50:00", 
+        "id": "E19" 
+    },
+    "E20": { 
+        "title": "Martes, 17:10 - 18:50, Facultad de Medicina - I-A207 - Beltrán Gárate, Brady Ernesto (Práctica)", 
+        "start": "2024-08-13T17:10:00", 
+        "end": "2024-08-13T18:50:00", 
+        "id": "E20" 
+    },
+    "E21": { 
+        "title": "Jueves, 15:30 - 17:10, Facultad de Medicina - I-A106 - Vasquez Sotomayor, Flor del Milagro (Laboratorio)", 
+        "start": "2024-08-15T15:30:00", 
+        "end": "2024-08-15T17:10:00", 
+        "id": "E21" 
+    },
+    "E22": { 
+        "title": "Martes, 16:20 - 18:00, Facultad de Medicina - I-A307 - La Serna Infantes, Jorge Estanislao (Práctica)", 
+        "start": "2024-08-13T16:20:00", 
+        "end": "2024-08-13T18:00:00", 
+        "id": "E22" 
+    },
+    "E23": { 
+        "title": "Martes, 18:50 - 20:30, Facultad de Medicina - I-A207 - Beltrán Gárate, Brady Ernesto (Práctica)", 
+        "start": "2024-08-13T18:50:00", 
+        "end": "2024-08-13T20:30:00", 
+        "id": "E23" 
+    },
+    "E24": { 
+        "title": "Sábado, 16:20 - 18:00, Facultad de Medicina - I-A106 - Rodriguez Quiispe, Richard Saul (Laboratorio)", 
+        "start": "2024-08-17T16:20:00", 
+        "end": "2024-08-17T18:00:00", 
+        "id": "E24" 
+    },
+    "E25": { 
+        "title": "Martes, 18:00 - 19:40, Facultad de Medicina - I-A408 - La Serna Infantes, Jorge Estanislao (Práctica)", 
+        "start": "2024-08-13T18:00:00", 
+        "end": "2024-08-13T19:40:00", 
+        "id": "E25" 
+    },
+    "E26": { 
+        "title": "Sábado, 18:00 - 19:40, Facultad de Medicina - I-A106 - Rodriguez Quiispe, Richard Saul (Laboratorio)", 
+        "start": "2024-08-17T18:00:00", 
+        "end": "2024-08-17T19:40:00", 
+        "id": "E26" 
+    },   
+    "A1": { "title": "Lunes, 14:40 - 15:30, Teoría de Anatomía - E-5034 - Valderrama Wong, Milton John Carlos", "start": "2024-08-12T14:40:00", "end": "2024-08-12T15:30:00", "id": "A1" },
+    "A2": { "title": "Lunes, 15:30 - 16:20, Teoría de Anatomía - E-5034 - Espinoza Delgado, Enrique Eduardo", "start": "2024-08-12T15:30:00", "end": "2024-08-12T16:20:00", "id": "A2" },
+
+    "A3": { "title": "Miércoles, 14:40 - 15:30, Teoría de Anatomía - E-5034 - Romero Visurraga, Wilinton Gregorio", "start": "2024-08-14T14:40:00", "end": "2024-08-14T15:30:00", "id": "A3" },
+    "A14": { "title": "Miércoles, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Cabrera Romero, Segundo German", "start": "2024-08-14T15:30:00", "end": "2024-08-14T18:50:00", "id": "A14" },
+    "A15": { "title": "Miércoles, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Durand Lopez, Cesar Augusto", "start": "2024-08-14T15:30:00", "end": "2024-08-14T18:50:00", "id": "A15" },
+    "A16": { "title": "Miércoles, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Espinoza Delgado, Enrique Eduardo", "start": "2024-08-14T15:30:00", "end": "2024-08-14T18:50:00", "id": "A16" },
+    "A17": { "title": "Miércoles, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Kiyohara Ramos, Marco Antonio", "start": "2024-08-14T15:30:00", "end": "2024-08-14T18:50:00", "id": "A17" },
+    "A18": { "title": "Miércoles, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Razuri Bustamante, Cesar Ramon", "start": "2024-08-14T15:30:00", "end": "2024-08-14T18:50:00", "id": "A18" },
+    "A19": { "title": "Miércoles, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Romero Visurraga, Wilinton Gregorio", "start": "2024-08-14T15:30:00", "end": "2024-08-14T18:50:00", "id": "A19" },
+    "A20": { "title": "Miércoles, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Sandoval Vilchez, José Santiago", "start": "2024-08-14T15:30:00", "end": "2024-08-14T18:50:00", "id": "A20" },
+    "A21": { "title": "Miércoles, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Silva Campos, Pedro", "start": "2024-08-14T15:30:00", "end": "2024-08-14T18:50:00", "id": "A21" },
+    "A22": { "title": "Miércoles, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Valderrama Wong, Milton John Carlos", "start": "2024-08-14T15:30:00", "end": "2024-08-14T18:50:00", "id": "A22" },
+
+    "A4": { "title": "Viernes, 14:40 - 15:30, Teoría de Anatomía - E-5034 - Kiyohara Ramos, Marco Antonio", "start": "2024-08-16T14:40:00", "end": "2024-08-16T15:30:00", "id": "A4" },
+    "A5": { "title": "Lunes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Cabrera Romero, Segundo German", "start": "2024-08-12T16:20:00", "end": "2024-08-12T19:40:00", "id": "A5" },
+    "A6": { "title": "Lunes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Durand Lopez, Cesar Augusto", "start": "2024-08-12T16:20:00", "end": "2024-08-12T19:40:00", "id": "A6" },
+    "A7": { "title": "Lunes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Espinoza Delgado, Enrique Eduardo", "start": "2024-08-12T16:20:00", "end": "2024-08-12T19:40:00", "id": "A7" },
+    "A8": { "title": "Lunes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Kiyohara Ramos, Marco Antonio", "start": "2024-08-12T16:20:00", "end": "2024-08-12T19:40:00", "id": "A8" },
+    "A9": { "title": "Lunes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Razuri Bustamante, Cesar Ramon", "start": "2024-08-12T16:20:00", "end": "2024-08-12T19:40:00", "id": "A9" },
+    "A10": { "title": "Lunes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Romero Visurraga, Wilinton Gregorio", "start": "2024-08-12T16:20:00", "end": "2024-08-12T19:40:00", "id": "A10" },
+    "A11": { "title": "Lunes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Sandoval Vilchez, José Santiago", "start": "2024-08-12T16:20:00", "end": "2024-08-12T19:40:00", "id": "A11" },
+    "A12": { "title": "Lunes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Silva Campos, Pedro", "start": "2024-08-12T16:20:00", "end": "2024-08-12T19:40:00", "id": "A12" },
+    "A13": { "title": "Lunes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Valderrama Wong, Milton John Carlos", "start": "2024-08-12T16:20:00", "end": "2024-08-12T19:40:00", "id": "A13" },
+    
+    "A23": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Cabrera Romero, Segundo German", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A23" },
+    "A24": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - De La Cruz Aramburu, Pedro Victor", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A24" },
+    "A25": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Durand Lopez, Cesar Augusto", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A25" },
+    "A26": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Espinoza Delgado, Enrique Eduardo", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A26" },
+    "A27": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Kiyohara Ramos, Marco Antonio", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A27" },
+    "A28": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Razuri Bustamante, Cesar Ramon", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A28" },
+    "A29": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Romero Visurraga, Wilinton Gregorio", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A29" },
+    "A30": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Sandoval Vilchez, José Santiago", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A30" },
+    "A31": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Silva Campos, Pedro", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A31" },
+    "A32": { "title": "Viernes, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Valderrama Wong, Milton John Carlos", "start": "2024-08-16T15:30:00", "end": "2024-08-16T18:50:00", "id": "A32" },
+
+    "A33": { "title": "Jueves, 14:40 - 15:30, Teoría de Anatomía - E-5034 - Cabrera Romero, Segundo German", "start": "2024-08-15T14:40:00", "end": "2024-08-15T15:30:00", "id": "A33" },
+  
+    "A34": { "title": "Martes, 14:40 - 15:30, Teoría de Anatomía - E-5034 - Valderrama Wong, Milton John Carlos", "start": "2024-08-13T14:40:00", "end": "2024-08-13T15:30:00", "id": "A34" },
+    "A35": { "title": "Martes, 15:30 - 16:20, Teoría de Anatomía - E-5034 - Durand Lopez, Cesar Augusto", "start": "2024-08-13T15:30:00", "end": "2024-08-13T16:20:00", "id": "A35" },
+  
+    "A36": { "title": "Sábado, 14:40 - 15:30, Teoría de Anatomía - E-5034 - Sandoval Vilchez, José Santiago", "start": "2024-08-17T14:40:00", "end": "2024-08-17T15:30:00", "id": "A36" },
+   
+    "A37": { "title": "Jueves, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Cabrera Romero, Segundo German", "start": "2024-08-15T15:30:00", "end": "2024-08-15T18:50:00", "id": "A37" },
+    "A38": { "title": "Jueves, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Chavarry Delgado, Henry Eduardo", "start": "2024-08-15T15:30:00", "end": "2024-08-15T18:50:00", "id": "A38" },
+    "A39": { "title": "Jueves, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Durand Lopez, Cesar Augusto", "start": "2024-08-15T15:30:00", "end": "2024-08-15T18:50:00", "id": "A39" },
+    "A40": { "title": "Jueves, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Espinoza Delgado, Enrique Eduardo", "start": "2024-08-15T15:30:00", "end": "2024-08-15T18:50:00", "id": "A40" },
+    "A41": { "title": "Jueves, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Kiyohara Ramos, Marco Antonio", "start": "2024-08-15T15:30:00", "end": "2024-08-15T18:50:00", "id": "A41" },
+    "A42": { "title": "Jueves, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Romero Visurraga, Wilinton Gregorio", "start": "2024-08-15T15:30:00", "end": "2024-08-15T18:50:00", "id": "A42" },
+    "A43": { "title": "Jueves, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Sandoval Vilchez, José Santiago", "start": "2024-08-15T15:30:00", "end": "2024-08-15T18:50:00", "id": "A43" },
+    "A44": { "title": "Jueves, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Silva Campos, Pedro", "start": "2024-08-15T15:30:00", "end": "2024-08-15T18:50:00", "id": "A44" },
+    "A45": { "title": "Jueves, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Valderrama Wong, Milton John Carlos", "start": "2024-08-15T15:30:00", "end": "2024-08-15T18:50:00", "id": "A45" },
+ 
+    "A46": { "title": "Martes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Cabrera Romero, Segundo German", "start": "2024-08-13T16:20:00", "end": "2024-08-13T19:40:00", "id": "A46" },
+    "A47": { "title": "Martes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Chavarry Delgado, Henry Eduardo", "start": "2024-08-13T16:20:00", "end": "2024-08-13T19:40:00", "id": "A47" },
+    "A48": { "title": "Martes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - De La Cruz Aramburu, Pedro Victor", "start": "2024-08-13T16:20:00", "end": "2024-08-13T19:40:00", "id": "A48" },
+    "A49": { "title": "Martes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Durand Lopez, Cesar Augusto", "start": "2024-08-13T16:20:00", "end": "2024-08-13T19:40:00", "id": "A49" },
+    "A50": { "title": "Martes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Espinoza Delgado, Enrique Eduardo", "start": "2024-08-13T16:20:00", "end": "2024-08-13T19:40:00", "id": "A50" },
+    "A51": { "title": "Martes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Kiyohara Ramos, Marco Antonio", "start": "2024-08-13T16:20:00", "end": "2024-08-13T19:40:00", "id": "A51" },
+    "A52": { "title": "Martes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Romero Visurraga, Wilinton Gregorio", "start": "2024-08-13T16:20:00", "end": "2024-08-13T19:40:00", "id": "A52" },
+    "A53": { "title": "Martes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Sandoval Vilchez, José Santiago", "start": "2024-08-13T16:20:00", "end": "2024-08-13T19:40:00", "id": "A53" },
+    "A54": { "title": "Martes, 16:20 - 19:40, Laboratorio de Anatomía - H-101 - Valderrama Wong, Milton John Carlos", "start": "2024-08-13T16:20:00", "end": "2024-08-13T19:40:00", "id": "A54" },
+   
+    "A55": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Cabrera Romero, Segundo German", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A55" },
+    "A56": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Chavarry Delgado, Henry Eduardo", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A56" },
+    "A57": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - De La Cruz Aramburu, Pedro Victor", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A57" },
+    "A58": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Durand Lopez, Cesar Augusto", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A58" },
+    "A59": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Espinoza Delgado, Enrique Eduardo", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A59" },
+    "A60": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Kiyohara Ramos, Marco Antonio", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A60" },
+    "A61": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Romero Visurraga, Wilinton Gregorio", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A61" },
+    "A62": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Sandoval Vilchez, José Santiago", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A62" },
+    "A63": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Valderrama Wong, Milton John Carlos", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A63" },
+    "A64": { "title": "Sábado, 18:50 - 20:30, Práctica de Anatomía - E-5034 (Semipresencial) - Valderrama Wong, Milton John Carlos", "start": "2024-08-17T18:50:00", "end": "2024-08-17T20:30:00", "id": "A64" } 
+
+       }
+            ;
+
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                slotMinTime: '06:00:00',
+                slotMaxTime: '23:00:00',
+                events: Object.values(timeSlots),
+                editable: true,
+                selectable: true,
+                views: {
+                    timeGridWeek: {
+                        titleFormat: { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }
+                    }
+                }
+            });
+
+            calendar.render();
+
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    updateCalendar();
+                });
+            });
+
+            function updateCalendar() {
+                const selectedEvents = Object.values(timeSlots).filter(event => document.querySelector(`input[type="checkbox"][value="${event.id}"]`).checked);
+                calendar.removeAllEvents();
+                calendar.addEventSource(selectedEvents);
+            }
+        });
+    </script>
+</body>
+</html>
