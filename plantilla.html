@@ -6,34 +6,31 @@
     <title>Lista de Cursos de Nani</title>
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/main.min.css' rel='stylesheet' />
     <style>
-        body {
+             body {
             background-color: pink; /* Fondo de la página color rosado */
         }
         #calendar {
-            max-width: 900px;
+            width: 100%; /* Ajusta la anchura al 100% */
             margin: 0 auto;
+            height: auto; /* Permite que la altura crezca automáticamente */
         }
-
-  
-  
         #container {
             display: flex;
             justify-content: center; /* Centrar contenido horizontalmente */
             align-items: center; /* Alinear contenido verticalmente al centro */
             margin: 20px;
         }
-
         #image-container {
             margin-right: 20px; /* Espacio entre la imagen y el calendario */
             margin-top: 50px; /* Baja la imagen un poco más abajo */
         }
     </style>
 </head>
-<body>
+<body><h1>Powered by: PEDRO JOSEFAT SOTELO BAUTISTA</h1>
     <!-- <img src="/my molody.png" alt="MY MELODY" width="300"> 
     <h1>Cursos</h1> -->
 
-    <h1>Cursos</h1>
+    <h2>Cursos</h2>
 
     <form id="course-form">
 
@@ -460,6 +457,7 @@
 
 
     <div id="calendar"></div>
+    <button id="export-button">Exportar a JPG/PNG</button>
 
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
     <script>
@@ -943,9 +941,7 @@
     "A63": { "title": "Sábado, 15:30 - 18:50, Laboratorio de Anatomía - H-101 - Valderrama Wong, Milton John Carlos", "start": "2024-08-17T15:30:00", "end": "2024-08-17T18:50:00", "id": "A63", "backgroundColor": "red" },
     "A64": { "title": "Sábado, 18:50 - 20:30, Práctica de Anatomía - E-5034 (Semipresencial) - Valderrama Wong, Milton John Carlos", "start": "2024-08-17T18:50:00", "end": "2024-08-17T20:30:00", "id": "A64", "backgroundColor": "red" } 
 
-       }
-            ;
-
+       };
             const calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'timeGridWeek',
                 slotMinTime: '06:00:00',
@@ -957,8 +953,30 @@
                     timeGridWeek: {
                         titleFormat: { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }
                     }
+                },
+                eventMouseEnter: function(info) {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.style.position = 'absolute';
+                    tooltip.style.zIndex = '10001';
+                    tooltip.style.backgroundColor = '#fff';
+                    tooltip.style.padding = '5px';
+                    tooltip.style.border = '1px solid #ccc';
+                    tooltip.style.boxShadow = '2px 2px 5px rgba(0, 0, 0, 0.3)';
+                    tooltip.innerText = info.event.title; // Muestra el título del evento en el tooltip
+                    document.body.appendChild(tooltip);
+
+                    info.el.addEventListener('mousemove', function(e) {
+                        tooltip.style.left = e.pageX + 10 + 'px';
+                        tooltip.style.top = e.pageY + 10 + 'px';
+                    });
+
+                    info.el.addEventListener('mouseleave', function() {
+                        tooltip.remove();
+                    });
                 }
             });
+            
 
             calendar.render();
 
@@ -973,6 +991,21 @@
                 calendar.removeAllEvents();
                 calendar.addEventSource(selectedEvents);
             }
+            document.getElementById('export-button').addEventListener('click', function() {
+                const calendarEl = document.getElementById('calendar-container'); // Contenedor del calendario
+                
+                html2canvas(calendarEl, {
+                    scrollY: -window.scrollY, // Captura todo el contenido visible
+                    useCORS: true,            // Habilita el uso de CORS para cargar imágenes
+                    scale: 2                  // Aumenta la resolución de la imagen capturada
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL("image/png");
+                    const link = document.createElement('a');
+                    link.href = imgData;
+                    link.download = 'calendario.png'; // Nombre del archivo que se descargará
+                    link.click(); // Forzar la descarga
+                });
+            });
         });
     </script>
 </body>
